@@ -15,9 +15,9 @@ export default function Signup() {
   const create = async (data) => {
     setError("");
     try {
-      const Data = await authService.createAccount(data);
-      if (Data) {
-        const userData = await authService.getCurrentUser(Data);
+      const userData = await authService.createAccount(data);
+      if (userData) {
+        const userData = await authService.getCurrentUser();
         userData && dispatch(login(userData));
         navigate("/");
       }
@@ -44,16 +44,17 @@ export default function Signup() {
             to="/login"
             className="font-medium text-primary transition-all duration-200 hover:underline"
           >
-            Sign up
+            Sign In
           </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+
         <form onSubmit={handleSubmit(create)}>
-          <div className=" space-y-5">
+          <div className="space-y-5">
             <Input
               label="Full Name:"
               type="text"
-              placeholder="Enter Full Name"
+              placeholder="Enter Your Full Name"
               {...register("name", { required: true })}
             />
             <Input
@@ -63,7 +64,7 @@ export default function Signup() {
                 required: true,
                 validate: {
                   matchpattern: (value) =>
-                    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) ||
+                    /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi.test(value) ||
                     "Email address must be valid",
                 },
               })}

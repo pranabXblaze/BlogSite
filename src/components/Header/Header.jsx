@@ -25,7 +25,7 @@ export default function Header() {
     {
       name: "Logout",
       slug: "/logout",
-      active: !authStatus,
+      active: authStatus,
     },
     {
       name: "All Posts",
@@ -40,15 +40,15 @@ export default function Header() {
   ];
 
   return (
-    <header>
+    <header className="py-3 shadow bg-gray-600">
       <Container>
         <nav className="flex">
-          <div className="mr-4 shadow-lg">
+          <div className="mr-4">
             <Link to="/">
               <Logo width="70px" />
             </Link>
           </div>
-          <ul className="flex ml-auto bg-orange-400 rounded-lg">
+          <ul className="flex ml-auto">
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>

@@ -1,7 +1,9 @@
+import parse from "html-react-parser";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Appwriteservice from "../appwrite/config";
+import { Button, Container } from "../components";
 
 export default function Post() {
   const [post, setpost] = useState(null);
@@ -35,7 +37,7 @@ export default function Post() {
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <img
-            src={appwriteService.getFilePreview(post.featuredImage)}
+            src={Appwriteservice.getFilePreview(post.featuredImage)}
             alt={post.title}
             className="rounded-xl"
           />

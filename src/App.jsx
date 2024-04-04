@@ -20,21 +20,17 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (!loading) {
-    return (
-      <div className="min-h-screen flex flex-wrap content-between bg-stone-500">
-        <div className="w-full block">
-          <Header />
-          <main>
-            TODO: <Outlet />
-          </main>
-          <Footer />
-        </div>
+  return !loading ? (
+    <div className="min-h-screen flex flex-wrap content-between bg-stone-500">
+      <div className="w-full block">
+        <Header />
+        <main>
+          TODO: <Outlet />
+        </main>
+        <Footer />
       </div>
-    );
-  } else {
-    return null;
-  }
+    </div>
+  ) : null;
 }
 
 export default App;

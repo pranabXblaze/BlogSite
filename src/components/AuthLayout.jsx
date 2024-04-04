@@ -18,7 +18,7 @@ export default function AuthLayout({ authentication = true, children }) {
 
     //let authValue = authStatus === true ? true : false
 
-    TODO: if (authentication && authstatus !== authentication) {
+    if (authentication && authstatus !== authentication) {
       navigate("/login");
     } else if (!authentication && authstatus !== authentication) {
       navigate("/");

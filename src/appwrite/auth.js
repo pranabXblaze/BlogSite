@@ -23,7 +23,7 @@ export class AuthService {
 
       if (userAccount) {
         //call login function
-        return this.login;
+        return this.login({ email, password });
       } else {
         return userAccount;
       }
@@ -32,9 +32,9 @@ export class AuthService {
     }
   }
 
-  async login({ username, password }) {
+  async login({ email, password }) {
     try {
-      return await this.account.createEmailSession(username, password);
+      return await this.account.createEmailSession(email, password);
     } catch (error) {
       throw error;
     }
